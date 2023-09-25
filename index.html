@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>To-do List</title>
+</head>
+<body>
+  <h1>To-do List</h1>
+    <div class="container">
+      <form class="was-validated" novalidate>
+        <div class="form-group">
+            <input class="form-control-lg" type="text" placeholder="Nome da Atividade" required>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" type="text" placeholder="Descrição da atividade" ></textarea>
+        </div>
+        <div class="form-group">
+        <select class="form-select" aria-label="Categoria" aria-placeholder="Categoria">
+          <option selected disabled value="">Categoria</option>
+          <option value="Casa">Casa</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Trabalho">Trabalho</option>
+        </select>
+        </div>
+        <div class="form-group">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="prioridade">
+            <label class="form-check-label" for="prioridade">Urgente</label>
+          </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="button-add-task">Adicionar</button>
+        </div>
+      </form>
+ 
+
+
+<!--
+            <input class="input-task" type="text" name="add" id="add" placeholder="Adicione uma opção">
+-->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Pendentes</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Concluídas</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+  <div class="fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <ul class="list-task"></ul>
+  </div>
+  <div class="fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <ul class="list-task-completed"></ul>
+  </div>
+  </div>
+  
+
+</div>
+    
+<!-- Formulário de edição -->
+<div class="container">
+<div class="card edit-card" style="display: none;">
+  <div class="card-header">Editar Tarefa</div>
+  <div class="card-body">
+    <form id="edit-form">
+      <div class="form-group">
+        <input class="form-control-lg" type="text" id="edit-tarefa" placeholder="Nome da Atividade">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="edit-descricao" placeholder="Descrição da atividade"></textarea>
+      </div>
+      <div class="form-group">
+        <select class="form-select" id="edit-categoria" aria-label="Categoria">
+          <option selected>Categoria</option>
+          <option value="Casa">Casa</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Trabalho">Trabalho</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="edit-prioridade">
+            <label class="form-check-label" for="edit-prioridade">Urgente</label>
+          </div>
+      </div>
+      <button type="submit" class="button-add-task">Salvar</button>
+    </form>
+  </div>
+</div>
+</div>
+
+    <script src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+</body>
+</html>
