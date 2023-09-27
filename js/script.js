@@ -20,6 +20,7 @@ function AddTarefa() {
         alert('É obrigatório que o campo nome seja preenchido')
     } 
     
+    // Preenche o card com os dados inseridos no formulário
     else if(input.value){
     minhaLista.push({
         tarefa: input.value,
@@ -37,6 +38,7 @@ function AddTarefa() {
     MostrarTarefa()
 }
 
+// Função para exibir os cards de task
 function MostrarTarefa() {
     let novaLiPendentes = ''
     let novaLiConcluidas = ''
@@ -62,6 +64,7 @@ function MostrarTarefa() {
 
 
         `
+        // Separa as task concluídas das pendentes
         if (item.conclude) {
             novaLiConcluidas += listItem
           } else {
@@ -75,6 +78,7 @@ function MostrarTarefa() {
     const listaConcluidas = document.querySelector('.list-task-completed')
     listaConcluidas.innerHTML = novaLiConcluidas
 
+// Guarda as informações no local storage
     localStorage.setItem('lista', JSON.stringify(minhaLista))
 }
 
@@ -114,23 +118,22 @@ function Editar(index) {
     e.preventDefault();
   
     // Atualize os detalhes da tarefa com os valores do formulário de edição
-    minhaLista[editingIndex].tarefa = editTarefa.value;
-    minhaLista[editingIndex].texto = editDescricao.value;
-    minhaLista[editingIndex].categoria = editCategoria.value;
-    minhaLista[editingIndex].urgencia = editPrioridade.checked;
+    minhaLista[editingIndex].tarefa = editTarefa.value
+    minhaLista[editingIndex].texto = editDescricao.value
+    minhaLista[editingIndex].categoria = editCategoria.value
+    minhaLista[editingIndex].urgencia = editPrioridade.checked
   
     // Limpe o formulário de edição
-    editTarefa.value = '';
-    editDescricao.value = '';
-    editCategoria.value = '';
-    editPrioridade.checked = false;
+    editTarefa.value = ''
+    editDescricao.value = ''
+    editCategoria.value = ''
+    editPrioridade.checked = false
   
     // Oculte o formulário de edição e mostre o card original
-    editCard.style.display = 'none';
-    document.querySelector('.container').style.display = 'block';
+    editCard.style.display = 'none'
+    document.querySelector('.container').style.display = 'block'
   
-    // Atualize a exibição das tarefas
-    MostrarTarefa();
+    MostrarTarefa()
   });
   
   // Adicione eventos de clique aos botões "Editar" dos cards
@@ -139,6 +142,8 @@ function Editar(index) {
     button.addEventListener('click', () => Editar(index));
   });
 
+
+// Função para exibir os itens salvos no local storage ao recarregar á página
 function Recarregar() {
     const taskLocalStorage = localStorage.getItem('lista')
 
@@ -151,11 +156,12 @@ function Recarregar() {
 }
 
 
-
+// Altera o status de prioridade do card
 prioridade.addEventListener('change', function () {
     MostrarTarefa();
 });
 
+// Adicione eventos de clique aos botão adicionar do formulário
 button.addEventListener('click', AddTarefa)
 
 Recarregar()
